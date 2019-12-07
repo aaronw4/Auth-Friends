@@ -1,5 +1,6 @@
 import React from 'react';
 import {axiosWithAuth} from '../Utils/axiosWithAuth';
+import AddFriend from './AddFriend'
 
 class Friends extends React.Component {
     state = {
@@ -18,6 +19,12 @@ class Friends extends React.Component {
             .catch(err => console.log(err))
     };
 
+   // number = this.state.friends.length()
+
+    updateFriends = () => {  
+        window.location.reload();
+    }
+
     render() {
         return(
             <div>
@@ -30,6 +37,7 @@ class Friends extends React.Component {
                         </div>
                     ))}
                 </div>
+                <AddFriend update={this.updateFriends} number={this.number}/>
             </div>
         )
     }
