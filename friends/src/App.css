@@ -42,6 +42,12 @@ body {
   background: #FE4043;
   color: white;
 }
+.editButton {
+  height: 20px;
+  width: 30px;
+  padding: 0px;
+  margin-top: 12px;
+}
 .addForm {
   border: 1px solid black;
   width: 40vw;

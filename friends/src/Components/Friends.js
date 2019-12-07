@@ -1,10 +1,16 @@
 import React from 'react';
 import {axiosWithAuth} from '../Utils/axiosWithAuth';
-import AddFriend from './AddFriend'
+import AddFriend from './AddFriend';
+import EditFriend from './EditFriend';
 
 class Friends extends React.Component {
     state = {
-        friends: []
+        friends: [],
+        name: '',
+        age: '',
+        email: '',
+        id: '',
+        edit: false
     };
 
     componentDidMount() {
@@ -30,6 +36,18 @@ class Friends extends React.Component {
             .catch(err => console.log(err))
     };
 
+    editFriend = (name, age, email, id) => {
+        this.setState({name: name});
+        this.setState({age: age});
+        this.setState({email: email});
+        this.setState({id: id});
+        this.setState({edit: true})
+    }
+
+    cancelEdit = () => {
+        this.setState({edit: false})
+    }
+
     render() {
         return(
             <div>
@@ -41,11 +59,23 @@ class Friends extends React.Component {
                                 <p className='name'>{friend.name} (age: {friend.age})</p> 
                                 <button onClick={() => this.removeFriend(friend.id)}  className='deleteButton'>X</button>
                             </div>
-                            <div>{friend.email}</div>
+                            <div className='firstLine'>
+                                <p className='name'>{friend.email}</p>
+                                <button onClick={() => this.editFriend(friend.name, friend.age, friend.email, friend.id)} className='editButton'>Edit</button>
+                            </div>
                         </div>
                     ))}
                 </div>
-                <AddFriend update={this.updateFriends} />
+                {this.state.edit === true ? 
+                    <EditFriend 
+                        name={this.state.name}
+                        age={this.state.age}
+                        email={this.state.email}
+                        id={this.state.id}
+                        update={this.updateFriends}
+                        cancelEdit={this.cancelEdit}
+                    /> 
+                    : <AddFriend update={this.updateFriends} />} 
             </div>
         )
     }

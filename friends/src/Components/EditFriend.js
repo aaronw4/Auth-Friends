@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import {axiosWithAuth} from '../Utils/axiosWithAuth';
 
-const AddFriend = (props) => {
-    const [name, setName] = useState('');
-    const [age, setAge] = useState();
-    const [email, setEmail] = useState('');
+const EditFriend = (props) => {
+    const [name, setName] = useState(props.name);
+    const [age, setAge] = useState(props.age);
+    const [email, setEmail] = useState(props.email);
+    const [id, setID] = useState(props.id)
+
+    console.log(name, age, email, id)
 
     const handleName = e => {
         setName(e.target.value)
@@ -14,36 +17,33 @@ const AddFriend = (props) => {
     };
     const handleEmail = e => {
         setEmail(e.target.value)
-    }
+    };
 
     const handleSubmit = e => {
         e.preventDefault();
 
         axiosWithAuth()
-            .post('/api/friends', {
+            .put(`/api/friends/${id}`, {
                 name: name,
                 age: age,
                 email: email
             })
-            .then(props.update()
+            .then(
+                props.update(),
+                props.cancelEdit()
             )
             .catch(err => console.log(err));
-        
-        setName('');
-        setAge('');
-        setEmail('');
     };
 
     return(
-        <div className='addForm'>
-            <h3 className='title'>Add a Friend</h3>
+        <div>
+            <h3 className='title'>Edit Friend Information</h3>
             <form onSubmit={handleSubmit} className='addCont'>
-                <input
+            <input
                     type='text'
                     name='name'
                     value={name}
                     onChange={handleName}
-                    placeholder='Name'
                     className='input'
                 />
                 <input
@@ -51,7 +51,6 @@ const AddFriend = (props) => {
                     name='age'
                     value={age}
                     onChange={handleAge}
-                    placeholder='Age'
                     className='input'
                 />
                 <input
@@ -59,7 +58,6 @@ const AddFriend = (props) => {
                     name='email'
                     value={email}
                     onChange={handleEmail}
-                    placeholder='email'
                     className='input'
                 />
                 <button className='button'>Submit</button>
@@ -68,5 +66,4 @@ const AddFriend = (props) => {
     )
 }
 
-
-export default AddFriend
+export default EditFriend;
