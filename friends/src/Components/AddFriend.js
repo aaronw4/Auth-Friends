@@ -5,9 +5,6 @@ const AddFriend = (props) => {
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [email, setEmail] = useState('');
-    const [id, setID] = useState(props.number)
-
-    let newNumber = (Number(id) + 1).toString()
 
     const handleName = e => {
         setName(e.target.value)
@@ -24,10 +21,9 @@ const AddFriend = (props) => {
 
         axiosWithAuth()
             .post('/api/friends', {
-                id: {id},
-                name: {name},
-                age: {age},
-                email: {email}
+                name: `${name}`,
+                age: `${age}`,
+                email: `${email}`
             })
             .then(props.update()
             )
@@ -36,7 +32,6 @@ const AddFriend = (props) => {
         setName('');
         setAge('');
         setEmail('');
-        setID(newNumber);
     };
 
     return(

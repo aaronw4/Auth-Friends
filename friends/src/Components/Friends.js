@@ -18,8 +18,7 @@ class Friends extends React.Component {
             })
             .catch(err => console.log(err))
     };
-
-   // number = this.state.friends.length()
+   // 
 
     updateFriends = () => {  
         window.location.reload();
@@ -37,7 +36,7 @@ class Friends extends React.Component {
                         </div>
                     ))}
                 </div>
-                <AddFriend update={this.updateFriends} number={this.number}/>
+                <AddFriend update={this.updateFriends} />
             </div>
         )
     }
