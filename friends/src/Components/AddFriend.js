@@ -35,14 +35,16 @@ const AddFriend = (props) => {
     };
 
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className='addForm'>
+            <h3 className='title'>Add a Friend</h3>
+            <form onSubmit={handleSubmit} className='addCont'>
                 <input
                     type='text'
                     name='name'
                     value={name}
                     onChange={handleName}
                     placeholder='Name'
+                    className='input'
                 />
                 <input
                     type='text'
@@ -50,6 +52,7 @@ const AddFriend = (props) => {
                     value={age}
                     onChange={handleAge}
                     placeholder='Age'
+                    className='input'
                 />
                 <input
                     type='text'
@@ -57,8 +60,9 @@ const AddFriend = (props) => {
                     value={email}
                     onChange={handleEmail}
                     placeholder='email'
+                    className='input'
                 />
-                <button>Submit</button>
+                <button className='button'>Submit</button>
             </form>
         </div>
     )

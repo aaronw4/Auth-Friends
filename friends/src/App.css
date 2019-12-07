@@ -28,3 +28,12 @@ body {
   margin: 5px;
   width: 300px;
 }
+.addForm {
+  border: 1px solid black;
+  width: 40vw;
+  margin: 50px auto;
+}
+.addCont {
+  display: flex;
+  flex-direction: column;
+}
