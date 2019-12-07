@@ -18,11 +18,17 @@ class Friends extends React.Component {
             })
             .catch(err => console.log(err))
     };
-   // 
 
     updateFriends = () => {  
         window.location.reload();
-    }
+    };
+
+    removeFriend = id => {
+        axiosWithAuth()
+            .delete(`/api/friends/${id}`)
+            .then(this.updateFriends())
+            .catch(err => console.log(err))
+    };
 
     render() {
         return(
@@ -31,7 +37,10 @@ class Friends extends React.Component {
                 <div className='friends'>
                     {this.state.friends.map(friend => (
                         <div key={friend.id} className='friend' >
-                            <div>{friend.name} (age: {friend.age})</div>
+                            <div className='firstLine'>
+                                <p className='name'>{friend.name} (age: {friend.age})</p> 
+                                <button onClick={() => this.removeFriend(friend.id)}  className='deleteButton'>X</button>
+                            </div>
                             <div>{friend.email}</div>
                         </div>
                     ))}
