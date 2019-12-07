@@ -36,7 +36,7 @@ const EditFriend = (props) => {
     };
 
     return(
-        <div>
+        <div className='editFriend'>
             <h3 className='title'>Edit Friend Information</h3>
             <form onSubmit={handleSubmit} className='addCont'>
             <input

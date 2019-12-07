@@ -49,11 +49,18 @@ body {
   margin-top: 12px;
 }
 .addForm {
-  border: 1px solid black;
+  border: 5px solid #4267B2;
   width: 40vw;
   margin: 50px auto;
 }
 .addCont {
   display: flex;
   flex-direction: column;
+}
+.editFriend {
+  background: #4267B2;
+  color: white;
+  border: 5px solid white;
+  width: 40vw;
+  margin: 50px auto;
 }
