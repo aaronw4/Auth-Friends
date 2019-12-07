@@ -1,6 +1,19 @@
 body {
   background: #E9EBEE;
 }
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.input {
+  width: 200px;
+  margin: 5px auto;
+  text-align: center;
+}
+.button {
+  width: 100px;
+  margin: 5px auto;
+}
 .title {
   text-align: center;
 }
