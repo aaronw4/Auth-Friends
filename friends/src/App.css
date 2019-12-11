@@ -1,0 +1,66 @@
+body {
+  background: #E9EBEE;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.input {
+  width: 200px;
+  margin: 5px auto;
+  text-align: center;
+}
+.button {
+  width: 100px;
+  margin: 5px auto;
+}
+.title {
+  text-align: center;
+}
+.friends {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.friend {
+  background: white;
+  padding: 5px;
+  margin: 5px;
+  width: 300px;
+}
+.firstLine {
+  display: flex;
+  justify-content: space-between;
+}
+.name {
+  line-height: 0;
+}
+.deleteButton {
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  background: #FE4043;
+  color: white;
+}
+.editButton {
+  height: 20px;
+  width: 30px;
+  padding: 0px;
+  margin-top: 12px;
+}
+.addForm {
+  border: 5px solid #4267B2;
+  width: 40vw;
+  margin: 50px auto;
+}
+.addCont {
+  display: flex;
+  flex-direction: column;
+}
+.editFriend {
+  background: #4267B2;
+  color: white;
+  border: 5px solid white;
+  width: 40vw;
+  margin: 50px auto;
+}
