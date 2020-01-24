@@ -10,7 +10,8 @@ class Friends extends React.Component {
         age: '',
         email: '',
         id: '',
-        edit: false
+        edit: false,
+        count: 1
     };
 
     componentDidMount() {
@@ -25,8 +26,25 @@ class Friends extends React.Component {
             .catch(err => console.log(err))
     };
 
-    updateFriends = () => {  
-        window.location.reload();
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.count !== prevState.count) {
+            axiosWithAuth()
+            .get('/api/friends')
+            .then(res => {
+                console.log(res.data);
+                this.setState({
+                    friends: res.data
+                })
+            })
+            .catch(err => console.log(err))
+        }        
+    }
+
+    updateFriends = () => { 
+        this.setState((state) => {
+            return {count: state.count + 1}
+        });
+        console.log(this.state.count)
     };
 
     removeFriend = id => {
